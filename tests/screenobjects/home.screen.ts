@@ -1,5 +1,8 @@
 import Shared from './shared.screen.ts';
+import { ChainablePromiseElement } from 'webdriverio';
 
-class Home extends Shared {
+class HomeScreen extends Shared {
 
 }
+
+export default new HomeScreen();

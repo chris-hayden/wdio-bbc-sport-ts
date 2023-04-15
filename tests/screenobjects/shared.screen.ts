@@ -1,4 +1,4 @@
-class Shared {
+export default class Shared {
     public get toolBar () {
         return $('[resource-id="toolbar"]');
     }

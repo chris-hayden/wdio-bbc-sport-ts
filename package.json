@@ -13,7 +13,7 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "wdio": "wdio run ./configs/wdio.shared.conf.ts",
-    "android": "wdio run ./configs/android.conf.ts"
+    "wdio": "npx wdio run ./configs/wdio.shared.conf.ts",
+    "android": "npx wdio run ./configs/android.conf.ts"
   }
 }

@@ -10,5 +10,9 @@
             "@wdio/appium-service"
         ],
         "target": "es2022"
-    }
+    },
+    "include": [
+        "./configs/*.ts",
+        "./tests/**/*.ts"
+    ]
 }

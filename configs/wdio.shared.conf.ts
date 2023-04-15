@@ -44,7 +44,11 @@ export const config: WebdriverIO.Config = {
     framework: 'cucumber',
     reporters: ['spec'],
     cucumberOpts: {
-        require: [''],
+        require: [
+            './tests/steps/given.ts',
+            './tests/steps/when.ts',
+            './tests/steps/then.ts',
+        ],
         backtrace: false,
         requireModule: [],
         dryRun: false,

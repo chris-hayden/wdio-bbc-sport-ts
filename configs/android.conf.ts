@@ -1,3 +1,4 @@
+import { join } from "path";
 import { config as baseConfig } from './wdio.shared.conf.ts';
 
 export const config: WebdriverIO.Config = {
@@ -5,11 +6,15 @@ export const config: WebdriverIO.Config = {
     ...{
       capabilities: [
         {
-          browserName: 'chrome',
-          'wdio:devtoolsOptions': {
-              headless: false
-          }
-        },
+          platformName: 'Android',
+          'appium:automationName': 'UiAutomator2',
+          'appium:deviceName': 'Pixel 3',
+          'appium:platformVersion': '10.0',
+          'appium:app': join(process.cwd(), './apps/bbc_sport.apk'),
+          },
+      ],
+      specs: [
+        '../tests/features/*.feature'
       ]
     }
 }
