@@ -8,8 +8,8 @@ export const config: WebdriverIO.Config = {
         {
           platformName: 'Android',
           'appium:automationName': 'UiAutomator2',
-          'appium:deviceName': 'Pixel 3',
-          'appium:platformVersion': '10.0',
+          'appium:deviceName': 'Pixel 4',
+          'appium:platformVersion': '11.0',
           'appium:app': join(process.cwd(), './apps/bbc_sport.apk'),
           },
       ],
