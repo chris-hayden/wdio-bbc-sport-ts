@@ -1,4 +1,7 @@
 import { ChainablePromiseElement } from 'webdriverio';
+import { join } from "path";
+import * as dotenv from 'dotenv';
+dotenv.config({ path: (join(process.cwd(), '.env')) });
 
 class SignInScreen {
     
@@ -29,12 +32,16 @@ class SignInScreen {
     }
 
     public get formMsgText () {
-        return $('[class="form-message__text"]');
+        return $$('[class="form-message__text"]');
     }
 
     // Methods
 
-    
+    public getEnvEmailPass(email, password) {
+        email = process.env[`${email.toUpperCase()}`];
+        password = process.env[`${password.toUpperCase()}`];
+        return { email, password };
+    }
 }
 
 export default new SignInScreen();

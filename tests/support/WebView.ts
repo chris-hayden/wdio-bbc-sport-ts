@@ -13,7 +13,6 @@ class WebView {
     async waitForWebViewContextLoaded () {
         await driver.waitUntil( async () => {
             const currentContexts = await this.getCurrentContexts();
-
             return currentContexts.length > 1 && currentContexts.find(context => context.toLowerCase().includes(context_ref.WEBVIEW)) !== 'undefined';
         }, {
                 timeout: 30000,

@@ -15,5 +15,8 @@
   "scripts": {
     "wdio": "npx wdio run ./configs/wdio.shared.conf.ts",
     "android": "npx wdio run ./configs/android.conf.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }

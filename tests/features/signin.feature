@@ -12,6 +12,7 @@ Feature: Launch the BBC Sport App and verify the Sign In screen
         Then I should see <message>
 
         Examples:
-            | email               | password        | message                      |
-            | test@testemail.com  | wRoNgPaSsWoRd!  | wrong username or password |
-            | test2@testemail.com | wRoNgPaSsWoRd!^ | wrong username or password |
+            | email         | password         | message                           |
+            | invalid_email | valid_password   | Usernames can only include...     |
+            | valid_email   | invalid_password | Sorry, that password isn't valid. |
+            | valid_email   | valid_password   | Get the news, reports and results |

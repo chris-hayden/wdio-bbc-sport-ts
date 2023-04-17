@@ -9,7 +9,8 @@ When(/^I tap on the Sign In button$/, async () => {
 });
 
 When(/^enter my email address as (.*) and the password as (.*)$/, async (email:string, password:string) => {
-    await SignInScreen.emailField.setValue(email);
-    await SignInScreen.passwordField.setValue(password);
+    let credentials = SignInScreen.getEnvEmailPass(email, password);
+    await SignInScreen.emailField.setValue(credentials.email);
+    await SignInScreen.passwordField.setValue(credentials.password);
     await SignInScreen.submitBtn.click();
 });
