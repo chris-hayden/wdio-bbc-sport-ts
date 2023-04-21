@@ -1,5 +1,5 @@
 import { When } from '@wdio/cucumber-framework';
-import { SportList } from '../support/types.js';
+import { OnboardingSportList } from '../support/types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
@@ -18,7 +18,7 @@ When(/^enter my email address as (.*) and the password as (.*)$/, async (email:s
 });
 
 When(/^I tap on a sport, it is shown as selected$/, async (data) => {
-    let dataTable: Array<SportList> = data.hashes();
+    let dataTable: Array<OnboardingSportList> = data.hashes();
     for (let each of dataTable) {
         if (!await OnboardingScreen.topicTitleSelected(each.Sport).isDisplayed()) {
             await OnboardingScreen.topicTitle(each.Sport).click();

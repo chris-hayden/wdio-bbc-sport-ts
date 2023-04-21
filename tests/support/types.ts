@@ -1,3 +1,3 @@
-export interface SportList {
+export interface OnboardingSportList {
     Sport: String
 }
