@@ -1,4 +1,4 @@
-Feature: BBC Sport App onboarding screens
+Feature: BBC Sport App - Verify the onboarding screens
     I want to verify the BBC Sport App onboarding screens
     function as intended after login.
 

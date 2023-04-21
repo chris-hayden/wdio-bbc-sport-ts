@@ -29,7 +29,6 @@ When(/^I tap on a sport, it is shown as selected$/, async (data) => {
 When(/^I tap on all selected sports$/, async () => {
     let selectedSportsLocators: ElementArrayType = await OnboardingScreen.allSelectedTopics;
     for (let each of selectedSportsLocators) {
-        console.log(typeof(each));
         await OnboardingScreen.topicTitle(await each.getText()).click();
     }
 });

@@ -3,3 +3,5 @@ node_modules/
 apps/
 .env
 .vscode/
+tests/reports/json
+tests/reports/cucumber-html-report

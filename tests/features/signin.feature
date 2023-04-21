@@ -1,4 +1,4 @@
-Feature: Launch the BBC Sport App and verify the Sign In screen
+Feature: BBC Sport App - Verify the sign in screen
     I want to verify the BBC Sport App loads successfully
     and that the Sign In screen functions as intended.
 

@@ -11,7 +11,7 @@ export const config: WebdriverIO.Config = {
           'appium:deviceName': 'Pixel 4',
           'appium:platformVersion': '11.0',
           'appium:app': join(process.cwd(), './apps/bbc_sport.apk'),
-          },
+        },
       ],
       specs: [
         '../tests/features/*.feature'
