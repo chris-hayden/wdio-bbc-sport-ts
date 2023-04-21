@@ -19,6 +19,7 @@ class SignInScreen {
         return $('[resource-id="register_button"]');
     }
 
+    // Webview elements
     public get emailField () {
         return $('[id="user-identifier-input"]');
     }
