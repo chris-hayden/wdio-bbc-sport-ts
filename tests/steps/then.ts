@@ -1,4 +1,5 @@
 import { Then } from '@wdio/cucumber-framework';
+import { SportList } from '../support/types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
@@ -16,7 +17,7 @@ Then(/^I should see (.*)$/, async (message: string) => {
 Then(/^I am on the onboarding screen, containing the most popular sports$/, async (data) => {
     await WebViewScreen.waitForFullyLoaded();
     await WebViewScreen.switchToContext('native');
-    let dataTable: Array<Object> = data.hashes();
+    let dataTable: Array<SportList> = data.hashes();
     for (let each of dataTable) {
         await expect(await OnboardingScreen.topicTitle(each.Sport)).toBeDisplayed();
     }
