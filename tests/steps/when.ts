@@ -4,6 +4,8 @@ import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
 
+//
+// Sign In 
 When(/^I tap on the Sign In button$/, async () => {
     await SignInScreen.signInBtn.click();
     await WebViewScreen.waitForWebViewIsDisplayedByXpath();
@@ -17,6 +19,8 @@ When(/^enter my email address as (.*) and the password as (.*)$/, async (email:s
     await SignInScreen.submitBtn.click();
 });
 
+//
+// Onboarding
 When(/^I tap on a sport, it is shown as selected$/, async (data) => {
     let dataTable: Array<OnboardingSportList> = data.hashes();
     for (let each of dataTable) {
@@ -27,8 +31,30 @@ When(/^I tap on a sport, it is shown as selected$/, async (data) => {
 });
 
 When(/^I tap on all selected sports$/, async () => {
-    let selectedSportsLocators: ElementArrayType = await OnboardingScreen.allSelectedTopics;
-    for (let each of selectedSportsLocators) {
-        await OnboardingScreen.topicTitle(await each.getText()).click();
+    if (await OnboardingScreen.selectedTopic.isDisplayed()) {
+        let selectedSportsLocators: ElementArrayType = await OnboardingScreen.allSelectedTopics;
+        for (let each of selectedSportsLocators) {
+            await OnboardingScreen.topicTitle(await each.getText()).click();
+        }
+    }
+});
+
+When(/^I tap the (.*) button$/, async (button: String) => {
+    let buttonName: String = (button.replaceAll("'", '') + 'Btn');
+    await (await OnboardingScreen[`${buttonName}`]).click();
+});
+
+When(/^I tap (.*) on all user added sports$/, async (btnText: String) => {
+    btnText = btnText.toLowerCase();
+    if (btnText.includes('following')) {
+        let allFollowing:ElementArrayType = await OnboardingScreen.allFollowedTopics;
+        for (let each of allFollowing) {
+            await (await each).click();
+        }
+    } else {
+        let allUnfollowed:ElementArrayType = await OnboardingScreen.allUnFollowedTopics;
+        for (let each of allUnfollowed) {
+            await (await each).click();
+        }
     }
 });

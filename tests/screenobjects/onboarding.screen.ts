@@ -13,6 +13,14 @@ class OnboardingScreen extends Shared {
         return $('[resource-id="subtitle_onboarding"]');
     }
 
+    public get nextBtn() {
+        return $('[resource-id="next_navigation_button"]');
+    }
+
+    public get doneBtn() {
+        return $('[resource-id="onboarding_done_button"]');
+    }
+
     public topicTitle(sport: String) {
         return $(`[resource-id="topic_title"][text="${sport}"]`);
     }
@@ -21,8 +29,27 @@ class OnboardingScreen extends Shared {
         return $(`[content-desc="${sport}, selected"]`);
     }
 
+    public get selectedTopic() {
+        return $('//*[contains(@content-desc, ", selected")]');
+    }
+
     public get allSelectedTopics() {
         return $$('//*[contains(@content-desc, ", selected")]');
+    }
+
+    public followedTopic(sport: String) {
+        return $(`//*[contains(@content-desc, 'Following ${sport}')]`);
+    }
+
+    public get allFollowedTopics() {
+        return $$('//*[contains(@content-desc, "Following ")]');
+    }
+
+    public unFollowedTopic(sport: String) {
+        return $(`//*[contains(@content-desc, 'Follow ${sport}')]`);
+    }
+    public get allUnFollowedTopics() {
+        return $$('//*[contains(@content-desc, "Follow ")]');
     }
 
 }
