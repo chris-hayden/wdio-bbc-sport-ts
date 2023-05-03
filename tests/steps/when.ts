@@ -1,5 +1,4 @@
 import { When } from '@wdio/cucumber-framework';
-import { OnboardingSportList } from '../support/types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
@@ -7,67 +6,35 @@ import WebViewScreen from '../screenobjects/webview.screen.js';
 //
 // Sign In 
 When(/^I tap on the Sign In button$/, async () => {
-    await SignInScreen.signInBtn.click();
+    await SignInScreen.tapSignInBtn();
     await WebViewScreen.waitForWebViewIsDisplayedByXpath();
     await WebViewScreen.switchToContext('webview');
 });
 
 When(/^enter my email address as (.*) and the password as (.*)$/, async (email:string, password:string) => {
-    let credentials = SignInScreen.getEnvEmailPass(email, password);
-    await SignInScreen.emailField.setValue(credentials.email);
-    await SignInScreen.passwordField.setValue(credentials.password);
-    await SignInScreen.submitBtn.click();
+    await SignInScreen.logIn(email, password);
 });
 
 //
 // Onboarding
 When(/^I tap on a sport, it is shown as selected$/, async (data) => {
-    let dataTable: Array<OnboardingSportList> = data.hashes();
-    for (let each of dataTable) {
-        if (!await OnboardingScreen.topicTitleSelected(each.Sport).isDisplayed()) {
-            await OnboardingScreen.topicTitle(each.Sport).click();
-        };
-    }
+    await OnboardingScreen.tapSport(data);
 });
 
 When(/^I tap on all selected sports$/, async () => {
-    if (await OnboardingScreen.selectedTopic.isDisplayed()) {
-        let selectedSportsLocators: ElementArrayType = await OnboardingScreen.allSelectedTopics;
-        for (let each of selectedSportsLocators) {
-            await OnboardingScreen.topicTitle(await each.getText()).click();
-        }
-    }
+    await OnboardingScreen.tapAllSelectedSports();
 });
 
 When(/^I tap the (.*) button$/, async (button: string) => {
-    let buttonName: string = (button.replaceAll("'", '') + 'Btn');
-    await (await OnboardingScreen[`${buttonName}`]).click();
+    await OnboardingScreen.tapButton(button);
 });
 
 When(/^I tap (.*) on all user added sports$/, async (btnText: string) => {
-    btnText = btnText.toLowerCase();
-    if (btnText.includes('following')) {
-        let allFollowing:ElementArrayType = await OnboardingScreen.allFollowedTopics;
-        for (let each of allFollowing) {
-            await (await each).click();
-        }
-    } else {
-        let allUnfollowed:ElementArrayType = await OnboardingScreen.allUnFollowedTopics;
-        for (let each of allUnfollowed) {
-            await (await each).click();
-        }
-    }
+    await OnboardingScreen.tapAddedSports(btnText);
 });
 
 When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus: string) => {
-    let subBtn: string = (subStatus.replaceAll("'", '') + 'Notifications');
-    let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
-    for (let each of sportNotifications) {
-        let notificationTopic = await each.getAttribute('content-desc');
-        if (!notificationTopic.includes('Top Stories')) {
-            await each.click();
-        }
-    }
+    await OnboardingScreen.tapNotificationBell(subStatus);
 });
 
 When(/^I enter (.*) into the search box$/, async (searchTerm: string | number) => {
