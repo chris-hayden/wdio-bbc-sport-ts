@@ -49,3 +49,12 @@ Then(/^I can see that no sports are indicated as `Following`$/, async () => {
     let followedSports: ElementArrayType = await OnboardingScreen.allFollowedTopics;
     expect(followedSports.length).toEqual(0);
 });
+
+Then(/^I can see that notifications for all sports are turned off$/, async () => {
+    let sportNotifications: ElementArrayType = await OnboardingScreen.allSubscribedNotifications;
+    if (await OnboardingScreen.subscribedNotificationBtn('Top Stories').isDisplayed()) {
+        expect(sportNotifications.length).toEqual(1);
+    } else {
+        expect(sportNotifications.length).toEqual(0);
+    }
+});

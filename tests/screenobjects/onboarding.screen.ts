@@ -48,10 +48,26 @@ class OnboardingScreen extends Shared {
     public unFollowedTopic(sport: String) {
         return $(`//*[contains(@content-desc, 'Follow ${sport}')]`);
     }
+    
     public get allUnFollowedTopics() {
         return $$('//*[contains(@content-desc, "Follow ")]');
     }
 
+    public subscribedNotificationBtn(sport: String) {
+        return $(`~Subscribed to ${sport} notifications`);
+    }
+
+    public get allSubscribedNotifications() {
+        return $$('//*[contains(@content-desc, "Subscribed to ")]');
+    }
+
+    public subscribeToTopicBtn(sport: String) {
+        return $(`~Subscribe to ${sport} notifications`);
+    }
+
+    public get allSubscribeToTopicBtns() {
+        return $$('//*[contains(@content-desc, "Subscribe to ")]');
+    }
 }
 
 export default new OnboardingScreen();

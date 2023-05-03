@@ -15,6 +15,8 @@ Feature: BBC Sport App - Verify the onboarding screens
             | Sport    |
             | Football |
             | Golf     |
+
+    Scenario Outline: Verify sports can be Followed or Unfollowed on the second onboarding screen
         When I tap 'Following' on all user added sports
         Then I can see that no sports are indicated as `Following`
         When I tap 'Follow' on all user added sports
@@ -22,3 +24,7 @@ Feature: BBC Sport App - Verify the onboarding screens
             | Sport    |
             | Football |
             | Golf     |
+
+    Scenario Outline: Verify the notifications button functions as expected on the second onboarding screen
+        When I tap the notification bell icon for all followed sports
+        Then I can see that notifications for all sports are turned off
