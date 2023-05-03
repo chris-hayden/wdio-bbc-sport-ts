@@ -1,4 +1,4 @@
-import { Then } from '@wdio/cucumber-framework';
+import { DataTable, Then } from '@wdio/cucumber-framework';
 import { OnboardingSportList } from '../support/types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
@@ -12,7 +12,7 @@ Then(/^I should see (.*)$/, async (message: string) => {
 
 //
 // Onboarding 
-Then(/^I am on the onboarding screen, containing the most popular sports$/, async (data) => {
+Then(/^I am on the onboarding screen, containing the most popular sports$/, async (data: DataTable) => {
     await WebViewScreen.switchToContext('native');
     await browser.waitUntil(async () => {
         return (await OnboardingScreen.onboardingTitle).isDisplayed();
@@ -28,7 +28,7 @@ Then(/^I am on the onboarding screen, with search function, for tailoring notifi
     await expect(await OnboardingScreen.onboardingSubTitle).toHaveTextContaining('Tailor your notifications');
 });
 
-Then(/^the sports I had selected are indicated as `Following`$/, async (data) => {
+Then(/^the sports I had selected are indicated as `Following`$/, async (data: DataTable) => {
     await OnboardingScreen.verifyFollowedSports(data);
 });
 

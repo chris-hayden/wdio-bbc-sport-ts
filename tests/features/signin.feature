@@ -7,7 +7,7 @@ Feature: BBC Sport App - Verify the sign in screen
         When I tap on the Sign In button
 
     @SignIn
-    Scenario Outline: Verification of BBC Sport App Launch
+    Scenario Outline: Verification of BBC Sport App sign in screen functionality
         And enter my email address as <email> and the password as <password>
         Then I should see <message>
 

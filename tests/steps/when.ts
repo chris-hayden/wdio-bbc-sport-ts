@@ -1,4 +1,4 @@
-import { When } from '@wdio/cucumber-framework';
+import { DataTable, When } from '@wdio/cucumber-framework';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
@@ -17,7 +17,7 @@ When(/^enter my email address as (.*) and the password as (.*)$/, async (email:s
 
 //
 // Onboarding
-When(/^I tap on a sport, it is shown as selected$/, async (data) => {
+When(/^I tap on a sport, it is shown as selected$/, async (data: DataTable) => {
     await OnboardingScreen.tapSport(data);
 });
 

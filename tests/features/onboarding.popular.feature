@@ -2,7 +2,7 @@ Feature: BBC Sport App - Verify the onboarding screens
     I want to verify the BBC Sport App onboarding screens
     function as intended after login.
 
-    Scenario: Verify onboarding screen allows choosing from popular sports
+    Scenario: Verify the first onboarding screen allows choosing from popular sports
         Given I log in to the BBC Sport App
         Then I am on the onboarding screen, containing the most popular sports
             | Sport             |

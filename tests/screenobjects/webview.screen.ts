@@ -1,4 +1,4 @@
-import WebView from "../support/WebView.ts";
+import WebView from "../support/WebView.js";
 
 class WebViewScreen extends WebView {
     async waitForWebViewIsDisplayedByXpath(isShown = true): Promise<boolean|void> {

@@ -1,6 +1,7 @@
 import Shared from './shared.screen.js';
 import { ChainablePromiseElement } from 'webdriverio';
 import { OnboardingSportList } from '../support/types.js';
+import { DataTable } from '@wdio/cucumber-framework';
 
 class OnboardingScreen extends Shared {
 
@@ -132,7 +133,7 @@ class OnboardingScreen extends Shared {
         }
     }
 
-    public async tapSport(data) {
+    public async tapSport(data: DataTable) {
         let dataTable: Array<OnboardingSportList> = data.hashes();
         for (let each of dataTable) {
             if (!await this.topicTitleSelected(each.Sport).isDisplayed()) {
@@ -141,7 +142,7 @@ class OnboardingScreen extends Shared {
         }
     }
 
-    public async verifyOnboardingScreenOne(data) {
+    public async verifyOnboardingScreenOne(data: DataTable) {
         let dataTable: Array<OnboardingSportList> = data.hashes();
         for (let each of dataTable) {
             await expect(await this.topicTitle(each.Sport)).toBeDisplayed();
@@ -160,7 +161,7 @@ class OnboardingScreen extends Shared {
         }
     }
 
-    public async verifyFollowedSports(data?) {
+    public async verifyFollowedSports(data?: DataTable) {
         if (data) {
             let dataTable: Array<OnboardingSportList> = data.hashes();
             for (let each of dataTable) {
