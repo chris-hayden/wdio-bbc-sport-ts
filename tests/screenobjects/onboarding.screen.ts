@@ -118,7 +118,7 @@ class OnboardingScreen extends Shared {
 
     public async tapButton(button: string) {
         let buttonName: string = (button.replaceAll("'", '') + 'Btn');
-        await (await OnboardingScreen[`${buttonName}`]).click();
+        await (await this[`${buttonName}`]).click();
     }
 
     public async tapNotificationBell(subStatus: string) {
@@ -179,7 +179,7 @@ class OnboardingScreen extends Shared {
 
     public async verifySportNotifications(subStatus: string) {
         let subBtn: string = (subStatus.replaceAll("'", '') + 'Notifications');
-        let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
+        let sportNotifications: ElementArrayType = await this[`${subBtn}`];
         let topicTitles: ElementArrayType = await this.allTopicTitles;
         if (subBtn.includes('unsubscribed')) {
             if (await this.subscribedNotificationBtn('Top Stories').isDisplayed()) {
