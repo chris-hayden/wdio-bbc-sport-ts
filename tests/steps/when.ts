@@ -39,12 +39,12 @@ When(/^I tap on all selected sports$/, async () => {
     }
 });
 
-When(/^I tap the (.*) button$/, async (button: String) => {
-    let buttonName: String = (button.replaceAll("'", '') + 'Btn');
+When(/^I tap the (.*) button$/, async (button: string) => {
+    let buttonName: string = (button.replaceAll("'", '') + 'Btn');
     await (await OnboardingScreen[`${buttonName}`]).click();
 });
 
-When(/^I tap (.*) on all user added sports$/, async (btnText: String) => {
+When(/^I tap (.*) on all user added sports$/, async (btnText: string) => {
     btnText = btnText.toLowerCase();
     if (btnText.includes('following')) {
         let allFollowing:ElementArrayType = await OnboardingScreen.allFollowedTopics;
@@ -59,8 +59,8 @@ When(/^I tap (.*) on all user added sports$/, async (btnText: String) => {
     }
 });
 
-When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus: String) => {
-    let subBtn: String = (subStatus.replaceAll("'", '') + 'Notifications');
+When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus: string) => {
+    let subBtn: string = (subStatus.replaceAll("'", '') + 'Notifications');
     let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
     for (let each of sportNotifications) {
         let notificationTopic = await each.getAttribute('content-desc');
@@ -68,4 +68,8 @@ When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus:
             await each.click();
         }
     }
+});
+
+When(/^I enter (.*) into the search box$/, async (searchTerm: string | number) => {
+    await OnboardingScreen.searchBox.setValue(searchTerm);
 });

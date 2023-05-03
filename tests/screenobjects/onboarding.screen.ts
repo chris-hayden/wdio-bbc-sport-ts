@@ -72,6 +72,22 @@ class OnboardingScreen extends Shared {
     public get allTopicTitles() {
         return $$('[resource-id="topic_title"]');
     }
+    
+    public get searchBox() {
+        return $('[resource-id="search_box_text"]');
+    }
+
+    public get searchResultTitle() {
+        return $('[resource-id="search_result_title"]');
+    }
+
+    public get searchResultSubtitle() {
+        return $('[resource-id="search_result_subtitle"]');
+    }
+    
+    public get searchResultEmpty() {
+        return $('[resource-id="search_results_empty_text"]');
+    }
 }
 
 export default new OnboardingScreen();

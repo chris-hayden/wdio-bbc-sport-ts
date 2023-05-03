@@ -50,8 +50,8 @@ Then(/^I can see that no sports are indicated as `Following`$/, async () => {
     expect(followedSports.length).toEqual(0);
 });
 
-Then(/^I can see that the notifications for all sports are (.*)$/, async (subStatus: String) => {
-    let subBtn: String = (subStatus.replaceAll("'", '') + 'Notifications');
+Then(/^I can see that the notifications for all sports are (.*)$/, async (subStatus: string) => {
+    let subBtn: string = (subStatus.replaceAll("'", '') + 'Notifications');
     let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
     let topicTitles: ElementArrayType = await OnboardingScreen.allTopicTitles;
     if (subBtn.includes('unsubscribed')) {
@@ -66,5 +66,17 @@ Then(/^I can see that the notifications for all sports are (.*)$/, async (subSta
         } else {
             expect(sportNotifications.length).toEqual(topicTitles.length - 1);
         }
+    }
+});
+
+Then(/^I see (.*) and (.*) in the results$/, async (title: string, subtitle: string) => {
+    if (title.includes('Sorry')) {
+        await expect(await OnboardingScreen.searchResultEmpty).toBeDisplayed();
+    } else if (subtitle === 'none') {
+        await expect(await OnboardingScreen.searchResultTitle).toHaveTextContaining(title)
+        await expect(await OnboardingScreen.searchResultSubtitle).not.toBeDisplayed();
+    } else {
+        await expect(await OnboardingScreen.searchResultTitle).toHaveTextContaining(title);
+        await expect(await OnboardingScreen.searchResultSubtitle).toHaveTextContaining(subtitle);
     }
 });
