@@ -57,16 +57,20 @@ class OnboardingScreen extends Shared {
         return $(`~Subscribed to ${sport} notifications`);
     }
 
-    public get allSubscribedNotifications() {
+    public get subscribedNotifications() {
         return $$('//*[contains(@content-desc, "Subscribed to ")]');
     }
 
-    public subscribeToTopicBtn(sport: String) {
+    public subscribeToNotificationBtn(sport: String) {
         return $(`~Subscribe to ${sport} notifications`);
     }
 
-    public get allSubscribeToTopicBtns() {
+    public get unsubscribedNotifications() {
         return $$('//*[contains(@content-desc, "Subscribe to ")]');
+    }
+
+    public get allTopicTitles() {
+        return $$('[resource-id="topic_title"]');
     }
 }
 

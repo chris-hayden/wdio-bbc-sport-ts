@@ -59,8 +59,9 @@ When(/^I tap (.*) on all user added sports$/, async (btnText: String) => {
     }
 });
 
-When(/^I tap the notification bell icon for all followed sports$/, async () => {
-    let sportNotifications: ElementArrayType = await OnboardingScreen.allSubscribedNotifications;
+When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus: String) => {
+    let subBtn: String = (subStatus.replaceAll("'", '') + 'Notifications');
+    let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
     for (let each of sportNotifications) {
         let notificationTopic = await each.getAttribute('content-desc');
         if (!notificationTopic.includes('Top Stories')) {

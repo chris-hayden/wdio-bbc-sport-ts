@@ -50,11 +50,21 @@ Then(/^I can see that no sports are indicated as `Following`$/, async () => {
     expect(followedSports.length).toEqual(0);
 });
 
-Then(/^I can see that notifications for all sports are turned off$/, async () => {
-    let sportNotifications: ElementArrayType = await OnboardingScreen.allSubscribedNotifications;
-    if (await OnboardingScreen.subscribedNotificationBtn('Top Stories').isDisplayed()) {
-        expect(sportNotifications.length).toEqual(1);
+Then(/^I can see that the notifications for all sports are (.*)$/, async (subStatus: String) => {
+    let subBtn: String = (subStatus.replaceAll("'", '') + 'Notifications');
+    let sportNotifications: ElementArrayType = await OnboardingScreen[`${subBtn}`];
+    let topicTitles: ElementArrayType = await OnboardingScreen.allTopicTitles;
+    if (subBtn.includes('unsubscribed')) {
+        if (await OnboardingScreen.subscribedNotificationBtn('Top Stories').isDisplayed()) {
+            expect(sportNotifications.length).toEqual(topicTitles.length - 1);
+        } else {
+            expect(sportNotifications.length).toEqual(topicTitles.length);
+        }
     } else {
-        expect(sportNotifications.length).toEqual(0);
+        if (await OnboardingScreen.subscribedNotificationBtn('Top Stories').isDisplayed()) {
+            expect(sportNotifications.length).toEqual(topicTitles.length);
+        } else {
+            expect(sportNotifications.length).toEqual(topicTitles.length - 1);
+        }
     }
 });

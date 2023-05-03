@@ -26,5 +26,7 @@ Feature: BBC Sport App - Verify the onboarding screens
             | Golf     |
 
     Scenario Outline: Verify the notifications button functions as expected on the second onboarding screen
-        When I tap the notification bell icon for all followed sports
-        Then I can see that notifications for all sports are turned off
+        When I tap the notification bell icon for all 'subscribed' sports
+        Then I can see that the notifications for all sports are 'unsubscribed'
+        When I tap the notification bell icon for all 'unsubscribed' sports
+        Then I can see that the notifications for all sports are 'subscribed'
