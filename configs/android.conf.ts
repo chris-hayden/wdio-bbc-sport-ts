@@ -15,6 +15,17 @@ export const config: WebdriverIO.Config = {
       ],
       specs: [
         '../tests/features/*.feature'
-      ]
+      ],
+      suites: {
+        login: [
+          '../tests/features/signin.feature'
+        ],
+        onboarding: [
+          '../tests/features/onboarding.*.feature'
+        ],
+        homescreen: [
+          '../tests/features/home*.feature'
+        ]
+      }
     }
 }

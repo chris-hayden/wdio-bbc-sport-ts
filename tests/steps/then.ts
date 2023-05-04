@@ -3,6 +3,7 @@ import { OnboardingSportList } from '../support/types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
+import HomeScreen from '../screenobjects/home.screen.js';
 
 //
 // Sign In 
@@ -42,4 +43,17 @@ Then(/^I can see that the notifications for all sports are (.*)$/, async (subSta
 
 Then(/^I see (.*) and (.*) in the results$/, async (title: string, subtitle: string) => {
     await OnboardingScreen.verifyOnboardingSearchResults(title, subtitle);
+});
+
+//
+// Shared / reusable
+Then(/^I am on the (.*) screen$/, async (screen: string) => {
+    screen = screen.toLowerCase();
+    switch (screen) {
+        case 'home':
+            await HomeScreen.verifyLoad();
+            break;
+        default:
+            break;
+    }
 });

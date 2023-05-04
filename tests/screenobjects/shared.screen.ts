@@ -11,7 +11,31 @@ export default class Shared {
         return $('~Open Menu');
     }
 
-    public get bottomNavBar () {
-        return $('[resource-id="bottom_nav"]');
+    public get backBtn () {
+        return $('~Navigate up');
+    }
+
+    public get home () {
+        return $('~Home');
+    }
+
+    public get mySport () {
+        return $('~My Sport');
+    }
+
+    public get scores () {
+        return $('~Scores');
+    }
+
+    public get guide () {
+        return $('~Guide');
+    }
+
+    public get allSport () {
+        return $('~All Sport');
+    }
+
+    public get livePulse () {
+        return $('[content-desc="Live:"]');
     }
 }

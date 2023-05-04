@@ -2,7 +2,7 @@ Feature: BBC Sport App - Verify the onboarding screens
     I want to verify the BBC Sport App onboarding screens
     function as intended after login.
 
-    Scenario: Verify intial onboarding screen chosen sports are retained on the second onboarding screen
+    Scenario: Verify initial onboarding screen chosen sports are retained on the second onboarding screen
         Given I log in to the BBC Sport App
         When I tap on all selected sports
         And I tap on a sport, it is shown as selected

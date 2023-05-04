@@ -20,7 +20,7 @@ class OnboardingScreen extends Shared {
     }
 
     public get doneBtn() {
-        return $('[resource-id="onboarding_done_button"]');
+        return $('[resource-id="onboarding_done_navigation_button"]');
     }
 
     public topicTitle(sport: String) {
