@@ -4,6 +4,10 @@ import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
+import MySportScreen from '../screenobjects/mysport.screen.js';
+import ScoresScreen from '../screenobjects/scores.screen.js';
+import GuideScreen from '../screenobjects/guide.screen.js';
+import AllSportScreen from '../screenobjects/allsport.screen.js';
 
 //
 // Sign In 
@@ -52,6 +56,23 @@ Then(/^I am on the (.*) screen$/, async (screen: string) => {
     switch (screen) {
         case 'home':
             await HomeScreen.verifyLoad();
+            await HomeScreen.verifyElements();
+            break;
+        case 'my sport':
+            await MySportScreen.verifyLoad();
+            await MySportScreen.verifyElements();
+            break;
+        case 'scores':
+            await ScoresScreen.verifyLoad();
+            await ScoresScreen.verifyElements();
+            break;
+        case 'guide':
+            await GuideScreen.verifyLoad();
+            await GuideScreen.verifyElements();
+            break;
+        case 'all sport':
+            await AllSportScreen.verifyLoad();
+            await AllSportScreen.verifyElements();
             break;
         default:
             break;

@@ -19,6 +19,7 @@ Given('I log in to the BBC Sport App', async () => {
     }, { timeout: 10000, timeoutMsg: 'Sign In screen did not load within 10 seconds.' });
     await SignInScreen.signInBtn.click();
     await WebViewScreen.waitForWebViewIsDisplayedByXpath();
+    await WebViewScreen.waitForWebViewContextLoaded();
     await WebViewScreen.switchToContext('webview');
     await SignInScreen.logIn('VALID_EMAIL', 'VALID_PASSWORD');
     await WebViewScreen.switchToContext('native');

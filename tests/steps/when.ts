@@ -2,12 +2,14 @@ import { DataTable, When } from '@wdio/cucumber-framework';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
+import Home from '../screenobjects/home.screen.js';
 
 //
 // Sign In 
 When(/^I tap on the Sign In button$/, async () => {
     await SignInScreen.tapSignInBtn();
     await WebViewScreen.waitForWebViewIsDisplayedByXpath();
+    await WebViewScreen.waitForWebViewContextLoaded();
     await WebViewScreen.switchToContext('webview');
 });
 
@@ -39,4 +41,10 @@ When(/^I tap the notification bell icon for all (.*) sports$/, async (subStatus:
 
 When(/^I enter (.*) into the search box$/, async (searchTerm: string | number) => {
     await OnboardingScreen.searchBox.setValue(searchTerm);
+});
+
+//
+// Shared / reuseable
+When(/^I tap on the (.*) tab$/, async (tab: string) => {
+    await Home.tapTab(tab);
 });
