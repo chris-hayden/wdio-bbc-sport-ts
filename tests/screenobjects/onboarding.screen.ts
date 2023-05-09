@@ -1,6 +1,6 @@
 import Shared from './shared.screen.js';
 import { ChainablePromiseElement } from 'webdriverio';
-import { OnboardingSportList } from '../support/types.js';
+import { OnboardingSportList } from '../support/Types.js';
 import { DataTable } from '@wdio/cucumber-framework';
 
 class OnboardingScreen extends Shared {

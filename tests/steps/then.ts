@@ -1,5 +1,5 @@
 import { DataTable, Then } from '@wdio/cucumber-framework';
-import { OnboardingSportList } from '../support/types.js';
+import { OnboardingSportList } from '../support/Types.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';

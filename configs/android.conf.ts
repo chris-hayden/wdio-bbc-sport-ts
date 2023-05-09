@@ -1,5 +1,5 @@
 import { join } from "path";
-import { config as baseConfig } from './wdio.shared.conf.js';
+import { config as baseConfig } from './shared.conf.js';
 
 export const config: WebdriverIO.Config = {
     ...baseConfig,

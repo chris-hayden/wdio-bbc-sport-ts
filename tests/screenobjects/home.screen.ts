@@ -1,5 +1,5 @@
 import Shared from './shared.screen.js';
-import Helpers from '../support/helpers.js';
+import Helpers from '../support/Helpers.js';
 import { ChainablePromiseElement } from 'webdriverio';
 
 class HomeScreen extends Shared {

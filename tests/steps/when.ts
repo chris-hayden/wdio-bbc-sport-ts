@@ -1,8 +1,8 @@
 import { DataTable, When } from '@wdio/cucumber-framework';
+import HomeScreen from '../screenobjects/home.screen.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
 import SignInScreen from '../screenobjects/signin.screen.js';
 import WebViewScreen from '../screenobjects/webview.screen.js';
-import Home from '../screenobjects/home.screen.js';
 
 //
 // Sign In 
@@ -46,5 +46,5 @@ When(/^I enter (.*) into the search box$/, async (searchTerm: string | number) =
 //
 // Shared / reuseable
 When(/^I tap on the (.*) tab$/, async (tab: string) => {
-    await Home.tapTab(tab);
+    await HomeScreen.tapTab(tab);
 });

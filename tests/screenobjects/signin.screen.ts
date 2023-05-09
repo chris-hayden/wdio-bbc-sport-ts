@@ -1,7 +1,7 @@
 import { ChainablePromiseElement } from 'webdriverio';
 import { join } from "path";
-import WebViewScreen from '../screenobjects/webview.screen.js';
 import OnboardingScreen from '../screenobjects/onboarding.screen.js';
+import WebViewScreen from '../screenobjects/webview.screen.js';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: (join(process.cwd(), '.env')) });
 
